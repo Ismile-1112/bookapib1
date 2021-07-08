@@ -63,12 +63,17 @@ Router.get("/c/:category",async (req, res) => {
   Method         POST
  */
 
-Router.post("/new", (req, res) => {
-    const { newBook } = req.body;
+Router.post("/new", async (req, res) => {
+    try {
+        const { newBook } = req.body;
     
-    BookModel.create(newBook);
+        await BookModel.create(newBook);
+        
+        return res.json({ message: "book was added!" });
+    } catch (error) {
+        return res.json({ error: error.message });
+    }
     
-    return res.json({ message: "book was added!" });
 });
 
 /*
