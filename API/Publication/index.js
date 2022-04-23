@@ -9,7 +9,7 @@ const PublicationModel = require("../../database/publication");
   Parameters     None
   Method         Get
  */
-  Router.get("/", async (req, res) => {
+Router.get("/", async (req, res) => {
     const getAllPublications = await PublicationModel.find();
     return res.json({ getAllPublications });
 });
